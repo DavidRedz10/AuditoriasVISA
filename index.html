@@ -77,7 +77,6 @@
 <body>
 
   <h1>Plantilla Auditoria</h1>
-  <input type="file" id="doc" />
 
   <div class="card">
     <h3>Titulo de la transaccion</h3>
@@ -118,58 +117,56 @@
 
 
 <script>
-  const docs = document.getElementById("doc");
-  window.generate = function generate() {
-
-      const ptlfValue = document.getElementById("ptlfInput").value;
-      const nameValue = document.getElementById("nameInput").value;
-      const bus200Value = document.getElementById("bus200Input").value;
-      const bus210Value = document.getElementById("bus210Input").value;
-      const visa100Value = document.getElementById("visa100Input").value;
-      const visa110Value = document.getElementById("visa110Input").value;
-
-
     
+    
+    
+  function loadFile(url, callback) {
+      PizZipUtils.getBinaryContent(url, callback);
+  }
+  window.generate = function generate() {
+            const ptlfValue = document.getElementById("ptlfInput").value;
+const nameValue = document.getElementById("nameInput").value;
+const bus200Value = document.getElementById("bus200Input").value;
+const bus210Value = document.getElementById("bus210Input").value;
+const visa100Value = document.getElementById("visa100Input").value;
+const visa110Value = document.getElementById("visa110Input").value;
 
-      const reader = new FileReader();
-      if (docs.files.length === 0) {
-          alert("No has seleccionado una plantilla ");
-      }
-      reader.readAsBinaryString(docs.files.item(0));
+  
+  
+      loadFile(
+          "https://download1525.mediafire.com/cww5jpveo0ugu3-Sj6A8KaqXn7qqR_ZAEJs5J549x9aTGkrclfW5hnJgjW1ho-u5__PSYxdTx415S7IKsEEJTtf3s15tc1apyvRnbeSWiVZLpWW-O0HPUm-XWNlGLwjqKb5MiB7sEFSnOM2Z_ypZCY2CuTMtAaF9i4-4tWJAahqMe5k/q6mj0u1093jrzw0/Tag-Redeban.docx",
+          function (error, content) {
+              if (error) {
+                  throw error;
+              }
+              const zip = new PizZip(content);
+              const doc = new window.docxtemplater(zip, {
+                  paragraphLoop: true,
+                  linebreaks: true,
+              });
 
-      reader.onerror = function (evt) {
-          console.log("error reading file", evt);
-          alert("error reading file" + evt);
-      };
-      reader.onload = function (evt) {
-          const content = evt.target.result;
-          const zip = new PizZip(content);
-          const doc = new window.docxtemplater(zip, {
-              paragraphLoop: true,
-              linebreaks: true,
-          });
+              // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
+              doc.render({
+                    name: nameValue,
+                    PTLF: ptlfValue,   
+                    bus200: bus200Value,
+                    bus210: bus210Value,
+                    visa100: visa100Value,
+                    visa110: visa110Value,
+                });
 
-          // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
-          doc.render({
-              name: nameValue,
-              PTLF: ptlfValue,   
-              bus200: bus200Value,
-              bus210: bus210Value,
-              visa100: visa100Value,
-              visa110: visa110Value,
-          });
-
-          const blob = doc.getZip().generate({
-              type: "blob",
-              mimeType:
-                  "appl ication/vnd.openxmlformats-officedocument.wordprocessingml.document",
-              // compression: DEFLATE adds a compression step.
-              // For a 50MB output document, expect 500ms additional CPU time
-              compression: "DEFLATE",
-          });
-          // Output the document using Data-URI
-          saveAs(blob, "output.docx");
-      };
+              const blob = doc.getZip().generate({
+                  type: "blob",
+                  mimeType:
+                      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                  // compression: DEFLATE adds a compression step.
+                  // For a 50MB output document, expect 500ms additional CPU time
+                  compression: "DEFLATE",
+              });
+              // Output the document using Data-URI
+              saveAs(blob, "output.docx");
+          }
+      );
   };
 </script>
 
