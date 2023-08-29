@@ -77,6 +77,7 @@
   <body>
 
     <h1>Plantilla Auditoria</h1>
+    
 
     <div class="card">
       <h3>Titulo de la transaccion</h3>
@@ -118,8 +119,16 @@
 
   <script>
       
-      
-      
+      var today = new Date();
+
+      // Obtener los componentes de la fecha
+      var year = today.getFullYear();
+      var month = (today.getMonth() + 1).toString().padStart(2, '0'); // Los meses son indexados desde 0
+      var day = today.getDate().toString().padStart(2, '0');
+
+      var formattedDate = `${year}-${month}-${day}`;
+
+
     function loadFile(url, callback) {
         PizZipUtils.getBinaryContent(url, callback);
     }
@@ -164,7 +173,7 @@
                     compression: "DEFLATE",
                 });
                 // Output the document using Data-URI
-                saveAs(blob, "Auditoria " + nameValue + ".docx");
+                saveAs(blob, "Auditoria " + nameValue + " / "+formattedDate + ".docx");
             }
         );
 
