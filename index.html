@@ -29,8 +29,22 @@
                 -10px -10px 20px rgba(255, 255, 255, 0.5);
     margin: 20px;
     font-family: 'Courier New', monospace;
-    
   }
+
+  .card .lado {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card .lado h3 {
+    margin-right: 10px;
+  }
+
+  
+  .titulo-textarea {
+  font-weight: bold;
+  height: fit-content;
+}
   
   h1 {
     text-align: center;
@@ -54,6 +68,26 @@
     overflow: hidden;
     
   }
+
+
+  .titulo{
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.5);
+    font-family: 'Courier New', monospace;
+    resize: none;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: medium;
+    
+  }
+
 
   /* Estilos para el botón flotante */
   .floating-button {
@@ -92,15 +126,21 @@
     </div>
       
     <div class="card">
-      <h3>Auditoria del BUS</h3>
-      <textarea id="bus200Input" spellcheck="false" placeholder="Mensaje 200" class="input" name="firstName" oninput="autoResize(this)"></textarea> 
-      <textarea id="bus210Input" spellcheck="false" placeholder="Mensaje 210" class="input" name="bus200" oninput="autoResize(this)"></textarea> 
+      <div class="lado">
+      <h3>Auditoria</h3>
+      <input spellcheck="false" class="titulo" id="title1Input"></input>
+    </div>
+      <textarea id="Input1Input" spellcheck="false" placeholder="Campo 1" class="input" name="firstName" oninput="autoResize(this)"></textarea> 
+      <textarea id="Input2Input" spellcheck="false" placeholder="Campo 2" class="input" name="Input1" oninput="autoResize(this)"></textarea> 
     </div>
 
     <div class="card">
-      <h3>Audtoria visa</h3>
-      <textarea id="visa100Input" spellcheck="false" placeholder="Mensaje 100" class="input" name="firstName" oninput="autoResize(this)"></textarea> 
-      <textarea id="visa110Input" spellcheck="false" placeholder="Mensaje 110" class="input" name="firstName" oninput="autoResize(this)"></textarea>  
+      <div class="lado">
+        <h3>Auditoria</h3>
+        <input spellcheck="false" class="titulo" id="title2Input" ></input>
+      </div>
+      <textarea id="Input3Input" spellcheck="false" placeholder="Campo 1" class="input" name="firstName" oninput="autoResize(this)"></textarea> 
+      <textarea id="Input4Input" spellcheck="false" placeholder="Campo 2" class="input" name="firstName" oninput="autoResize(this)"></textarea>  
     </div>
 
 
@@ -140,10 +180,12 @@
     window.generate = function generate() {
               const ptlfValue = document.getElementById("ptlfInput").value;
   const nameValue = document.getElementById("nameInput").value;
-  const bus200Value = document.getElementById("bus200Input").value;
-  const bus210Value = document.getElementById("bus210Input").value;
-  const visa100Value = document.getElementById("visa100Input").value;
-  const visa110Value = document.getElementById("visa110Input").value;
+  const title1Value = document.getElementById("title1Input").value;
+  const Input1Value = document.getElementById("Input1Input").value;
+  const Input2Value = document.getElementById("Input2Input").value;
+  const title2Value = document.getElementById("title2Input").value; 
+  const Input3Value = document.getElementById("Input3Input").value;
+  const Input4Value = document.getElementById("Input4Input").value;
 
     
     
@@ -162,11 +204,13 @@
                 // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
                 doc.render({
                       name: nameValue,
-                      PTLF: ptlfValue,   
-                      bus200: bus200Value,
-                      bus210: bus210Value,
-                      visa100: visa100Value,
-                      visa110: visa110Value,
+                      PTLF: ptlfValue, 
+                      title1: title1Value,  
+                      input1: Input1Value,
+                      input2: Input2Value,
+                      title2: title2Value,
+                      input3: Input3Value,
+                      input4: Input4Value,
                   });
 
                 const blob = doc.getZip().generate({
@@ -184,10 +228,10 @@
 
               document.getElementById("ptlfInput").value = "";
               document.getElementById("nameInput").value = "";
-              document.getElementById("bus200Input").value = "";
-              document.getElementById("bus210Input").value = "";
-              document.getElementById("visa100Input").value = "";
-              document.getElementById("visa110Input").value = "";
+              document.getElementById("Input1Input").value = "";
+              document.getElementById("Input2Input").value = "";
+              document.getElementById("Input3Input").value = "";
+              document.getElementById("Input4Input").value = "";
       };
   </script>
 
