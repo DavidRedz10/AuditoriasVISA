@@ -1,28 +1,142 @@
-.input {
-    max-width: 200px;
-    min-height: 40px;
-    padding: 10px;
-    font-family: 'Courier New', Courier, monospace;
-    outline: none;
-    background: #e8e8e8;
-    box-shadow: 5px 5px 17px #c8c8c8,
-               -5px -5px 17px #ffffff;
-    border: none;
-    border-radius: 10px;
-    transition: all .5s;
-  }
-  
-  .input:focus {
-    background: #e8e8e8;
-    box-shadow: inset 5px 5px 17px #c8c8c8,
-              inset -5px -5px 17px #ffffff;
-  }
 
-  .card .lado {
-    display: flex;
-    align-items: center;
-  }
-  
-  .card .lado h3 {
-    margin-right: 10px;
-  }
+.NuevaSec {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  font-family: 'Courier New', monospace;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+  font-family: 'Courier New', monospace;
+  position: relative;
+  /* Añadido para posicionar correctamente el botón */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1),
+    -10px -10px 20px rgba(255, 255, 255, 0.5);
+  margin: 20px;
+  font-family: 'Courier New', monospace;
+}
+
+.card .lado {
+  display: flex;
+  align-items: center;
+}
+
+.card .lado h3 {
+  margin-right: 10px;
+}
+
+
+.titulo-textarea {
+  font-weight: bold;
+  height: fit-content;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-family: 'Courier New', monospace;
+}
+
+textarea {
+  width: 90%;
+  height: auto;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.5);
+  font-family: 'Courier New', monospace;
+  resize: none;
+  overflow: hidden;
+
+}
+
+
+.titulo {
+  width: 90%;
+  height: auto;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.5);
+  font-family: 'Courier New', monospace;
+  resize: none;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: medium;
+
+}
+
+
+/* Estilos para el botón flotante */
+.floating-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.floating-button1 {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.floating-button2 {
+  position: absolute;
+  bottom: 140px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
