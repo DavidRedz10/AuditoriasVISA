@@ -198,3 +198,4 @@ function eliminarElementosPorClase() {
 
   sectionCount = 0;
 }
+
