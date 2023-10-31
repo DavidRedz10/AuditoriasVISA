@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,36 +7,85 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="icon" type="image/vnd.icon" href="/favicon.ico">
   <title>Generador de Auditorias</title>
+  <style>
+    /* Estilos del sidebar */
+    .sidebar {
+      width: 200px;
+      background-color: #333;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      padding: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #fff;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      color: #00f; /* Cambia el color al pasar el ratón sobre los enlaces */
+    }
+
+    /* Estilos del contenido principal */
+    .content {
+      margin-left: 220px; /* Alinea el contenido principal al lado derecho del sidebar */
+      padding: 20px;
+    }
+
+    /* Estilo para las secciones dinámicas */
+    #sectionsContainer {
+      margin-left: 20px; /* Agrega un margen izquierdo para desplazar las secciones hacia la derecha */
+    }
+
+    /* Estilo para el texto "AuditFlow" */
+    .auditflow {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .audit {
+      color: #fff; /* Texto "Audit" en blanco */
+    }
+
+    .flow {
+      color: orange; /* Texto "Flow" en naranja */
+    }
+  </style>
 </head>
-
 <body class="fondo">
-
-  <h1>Plantilla Auditoria</h1>
-
-  <div id="sectionsContainer">
-    <!-- Aquí se agregarán las secciones dinámicamente -->
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="auditflow">
+      <span class="audit">Audit</span><span class="flow">Flow</span>
+    </div>
+    <a href="pagina1.html">Página 1</a>
+    <a href="pagina2.html">Página 2</a>
   </div>
 
-  <!-- Botones Flotantes -->
+  <!-- Contenido principal -->
+  <div class="content">
+    <h1>Plantilla Auditoria</h1>
+    <div id="sectionsContainer">
+      <!-- Aquí se agregarán las secciones dinámicamente -->
+    </div>
 
-  <button onclick="generate()" class="floating-button">
-    <i class="fas fa-download"></i>
-  </button>
+    <!-- Botones Flotantes -->
+    <button onclick="generate()" class="floating-button1">
+      <i class="fas fa-download"></i>
+    </button>
+    <button onclick="addSection()" class="floating-button2">
+      <i class="fas fa-plus"></i>
+    </button>
+    <button onclick="eliminarElementosPorClase()" class="floating-button3">
+      <i class="fas fa-undo"></i>
+    </button>
+  </div>
 
-  <button onclick="cleanInputs()" class="floating-button1">
-    <i class="fas fa-eraser"></i>
-  </button>
-
-  <button onclick="addSection()" class="floating-button2">
-    <i class="fas fa-plus"></i>
-  </button>
-
-  <button onclick="eliminarElementosPorClase()" class="floating-button3">
-    <i class="fas fa-undo"></i>
-  </button>
-
-
-    
   <!-- Script Javascript -->
   <script>
     function autoResize(textarea) {
@@ -50,26 +98,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
   <script src="https://unpkg.com/pizzip@3.1.4/dist/pizzip-utils.js"></script>
   <script src="script.js"></script>
-
 </body>
 <footer>
-  <div class="footer-content">
-    <div class="footer-links">
-      <a href="#">Inicio</a>
-      <a href="#">Acerca de nosotros</a>
-      <a href="#">Servicios</a>
-      <a href="#">Contacto</a>
-    </div>
-    <div class="footer-social">
-      <a href="mailto:darojas@rbm.com.co" class="footer-social-icon"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.rbmcolombia.com/wps/portal/index/" target="_blank" class="footer-social-icon"><i class="fas fa-building"></i></a>
-      <a href="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjC8cnDycaBAxWvS38AHRWyCmEYABAAGgJvYQ&ae=2&gclid=CjwKCAjw38SoBhB6EiwA8EQVLi6EyCrKuSo_u00_cYkLCNRx8YeIhVup1utzNES_ay3xD88clfOUNhoCwmoQAvD_BwE&ohost=www.google.com&cid=CAESbeD2rzjZV4vya7-KyO9H4-j5_Wml3NWpmpDC3zrN-zBuG6UCt-JMHWD7cSJwnZ5ADgD1lLvcylQlr1sTumtrSZTVTJvfHRKhHve76TFqCs_UKu5il9CZbaiDxivwGdw4OTaa5OPM32RuYGxFJTk&sig=AOD64_09780rGHiD91WJ-GVPRSJ8mVCupA&q&adurl&ved=2ahUKEwiI8L_DycaBAxXilmoFHfuHCQkQ0Qx6BAgJEAE&nis=8&dct=1" target="_blank" class="footer-social-icon"><i class="fas fa-school"></i></a>
-    </div>  
-  </div>
   <div class="footer-copyright">
-    &copy; Proyecto de practicas David Rojas para la empresa REDEBAN S.A.
+    &copy; Proyecto de prácticas David Rojas para la empresa REDEBAN S.A.
   </div>
-</footer> 
+</footer>
 </html>
-
-
