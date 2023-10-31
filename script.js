@@ -41,10 +41,11 @@
 
   function showDownloadHistory() {
     var sidebar = document.querySelector(".sidebar");
+    var downloadHistoryContainer = sidebar.querySelector(".download-history-container");
     var downloadHistory = document.createElement("div");
     downloadHistory.className = "download-history";
-    downloadHistory.innerHTML = '<h3 style="color: white  ;">Historial de Descargas</h3>';
-
+    
+  
     if (downloadedFiles.length === 0) {
       downloadHistory.innerHTML += '<p style="color: white;">Ningún archivo descargado aún.</p>';
     } else {
@@ -52,13 +53,13 @@
         downloadHistory.innerHTML += '<p style="color: white;">' + downloadedFiles[i] + "</p>";
       }
     }
-
-    var existingDownloadHistory = sidebar.querySelector(".download-history");
+  
+    var existingDownloadHistory = downloadHistoryContainer.querySelector(".download-history");
     if (existingDownloadHistory) {
       existingDownloadHistory.remove();
     }
-
-    sidebar.appendChild(downloadHistory);
+  
+    downloadHistoryContainer.appendChild(downloadHistory);
   }
 
   window.generate = function generate() {

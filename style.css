@@ -12,8 +12,12 @@
     padding-left: 15%;
   }
 
-
-
+  .download-history-container {
+    max-height: 500px; /* Altura máxima antes de habilitar el desplazamiento vertical */
+    overflow-y: auto; /* Habilita el desplazamiento vertical si se desborda la altura máxima */
+  }
+  
+  
   body {
     display: flex;
     flex-direction: column;
@@ -217,7 +221,7 @@
       /* Estilos del sidebar */
       .sidebar {
         width: 200px;
-        background-color: #333;
+        background-color: #3e3c3c7f;
         position: fixed;
         top: 0;
         left: 0;
@@ -262,3 +266,8 @@
       .flow {
         color: orange; /* Texto "Flow" en naranja */
       }
+
+
+
+
+      
