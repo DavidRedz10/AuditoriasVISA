@@ -212,3 +212,53 @@
     padding-bottom: 100px; /* Ajusta este valor según el tamaño del footer */
   }
 
+
+  
+      /* Estilos del sidebar */
+      .sidebar {
+        width: 200px;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: 20px;
+      }
+  
+      .sidebar a {
+        display: block;
+        color: #fff;
+        margin-bottom: 10px;
+        text-decoration: none;
+      }
+  
+      .sidebar a:hover {
+        color: orange ; /* Cambia el color al pasar el ratón sobre los enlaces */
+      }
+  
+      /* Estilos del contenido principal */
+      .content {
+        margin-left: 220px; /* Alinea el contenido principal al lado derecho del sidebar */
+        padding: 20px;
+      }
+  
+      /* Estilo para las secciones dinámicas */
+      #sectionsContainer {
+        margin-left: 20px; /* Agrega un margen izquierdo para desplazar las secciones hacia la derecha */
+      }
+  
+      /* Estilo para el texto "AuditFlow" */
+      .auditflow {
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        padding-bottom: 20px;
+      }
+  
+      .audit {
+        color: #fff; /* Texto "Audit" en blanco */
+      }
+  
+      .flow {
+        color: orange; /* Texto "Flow" en naranja */
+      }
