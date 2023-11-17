@@ -9,6 +9,23 @@
   <title>EBCDIC a ASCII</title>
 
 </head>
+<style>
+  #convertButton {
+    background-color: #f0f0f0; /* Color de fondo */
+    border: 1px solid #ffffff08; /* Borde */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 10px; /* Borde redondeado */
+    box-shadow: 5px 5px 15px #b0b0b0, -5px -5px 15px #ffffff; /* Sombra para crear relieve */
+    font-size: 16px; /* Tamaño de fuente */
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  #convertButton:hover {
+    box-shadow: 3px 3px 10px #b0b0b0, -3px -3px 10px #ffffff; /* Efecto de sombra al pasar el ratón */
+  }
+</style>
 <body class="fondo">
   <!-- Sidebar -->
   <div class="sidebar">
@@ -29,8 +46,8 @@
       <!-- Aquí se agregarán las secciones dinámicamente -->
 
       <div class="card">
-      <h2>EBCDIC to ASCII Converter</h2>
-      <h3 for="ebcdicInput">Enter EBCDIC Code:</h3>
+      <h2>Conversor EBCDIC a ASCII </h2>
+      <h3 for="ebcdicInput">Ingresa el EBCDIC:</h3>
       <input class="titulo" type="text" id="ebcdicInput" placeholder="Enter EBCDIC code">
   
       <br>
@@ -39,8 +56,8 @@
   
       <br>
   
-      <h3 for="asciiOutput">ASCII Output:</h3 >
-      <input class="titulo" type="text" id="asciiOutput" placeholder="ASCII output" readonly>
+      <h3 for="asciiOutput">Resultado ASCII:</h3 >
+      <input class="titulo" type="text" id="asciiOutput" placeholder="Resultado ASCII:" readonly>
   
     </div>
 
