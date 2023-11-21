@@ -1,3 +1,4 @@
+//Crear objeto para docxtemplater
 function createSectionObject(
   name,
   ptlf,
@@ -19,14 +20,15 @@ function createSectionObject(
     input4: input4,
   };
 }
+//____________________________________________________________
 
-// Obtener los componentes de la fecha
-
+//Obtener los componentes de la fecha
 var today = new Date();
 var year = today.getFullYear();
 var month = (today.getMonth() + 1).toString().padStart(2, "0");
 var day = today.getDate().toString().padStart(2, "0");
 var formattedDate = `${year}-${month}-${day}`;
+//____________________________________________________________
 
 function loadFile(url, callback) {
   PizZipUtils.getBinaryContent(url, callback);
@@ -52,8 +54,32 @@ function showDownloadHistory() {
       '<p style="color: white;">Ningún archivo descargado aún.</p>';
   } else {
     for (var i = 0; i < downloadedFiles.length; i++) {
-      downloadHistory.innerHTML +=
-        '<p style="color: white;">' + downloadedFiles[i] + "</p>";
+      (function (index) {
+        var downloadLink = document.createElement("a");
+        downloadLink.style.color = "white";
+        downloadLink.textContent = downloadedFiles[index];
+        downloadLink.href = "javascript:void(0);";
+        downloadLink.onclick = function () {
+          downloadFile(downloadedFiles[index]);
+        };
+
+        var deleteButton = document.createElement("button");
+        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        deleteButton.className = "delete-button";
+        deleteButton.style.backgroundColor = "#1C00ff00";
+        deleteButton.style.color = "#d9534f";
+        deleteButton.style.border = "none";
+        deleteButton.style.float = "right";
+        deleteButton.querySelector("i").style.fontSize = "20px";
+
+        deleteButton.onclick = function () {
+          deleteFile(downloadedFiles[index]);
+        };
+
+        downloadHistory.appendChild(downloadLink);
+        downloadHistory.appendChild(deleteButton);
+        downloadHistory.appendChild(document.createElement("br"));
+      })(i);
     }
   }
 
@@ -149,32 +175,31 @@ window.generate = function generate() {
 
       // Configurar AWS SDK
       AWS.config.update({
-        accessKeyId: 'AKIA4S4JXO76SPL4VHTS',
-        secretAccessKey: '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',
-        region: 'us-east-1'
+        accessKeyId: process.env.ACCESS_KEY,
+        secretAccessKey: process.env.PRIVATE_ACCESS_KEY,
+        region: "us-east-1",
       });
 
       // Crear el objeto S3
       var s3 = new AWS.S3();
 
       var generatedFileName =
-        "Auditoria " + sections[0].name + " / " + formattedDate + ".docx";
-      updateDownloadHistory(generatedFileName);
-
+        "Auditoria " + sections[0].name + " - " + formattedDate + ".docx";
 
       // Crear el objeto de parámetros para la carga del archivo
       var params = {
-        Bucket: 'auditflow',
+        Bucket: "auditflow",
         Key: generatedFileName,
         Body: blob,
-        ContentType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        ContentType:
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         // No incluir ACL para utilizar la configuración predeterminada del bucket
       };
 
       saveAs(blob, generatedFileName);
 
-        // Subir el archivo a S3
-        s3.upload(params, function (err, data) {
+      // Subir el archivo a S3
+      s3.upload(params, function (err, data) {
         if (err) {
           console.error("Error al subir el archivo a S3: ", err);
         } else {
@@ -182,7 +207,6 @@ window.generate = function generate() {
           updateDownloadHistory(generatedFileName);
         }
       });
-
     }
   );
 };
@@ -252,4 +276,40 @@ window.onload = function () {
   showDownloadHistory();
 };
 
+function removeFileFromHistory(filename) {
+  var index = downloadedFiles.indexOf(filename);
+  if (index !== -1) {
+    downloadedFiles.splice(index, 1);
+    showDownloadHistory(); // Actualizar el historial después de la eliminación
+  }
+}
 
+function deleteFile(filename) {
+  // Configurar AWS SDK
+  AWS.config.update({
+    accessKeyId: process.env.ACCESS_KEY,
+    secretAccessKey: process.env.PRIVATE_ACCESS_KEY,
+    region: "us-east-1",
+  });
+
+  // Crear el objeto S3
+  var s3 = new AWS.S3();
+
+  // Configurar parámetros para la eliminación
+  var params = {
+    Bucket: "auditflow",
+    Key: filename,
+  };
+
+  // Eliminar el archivo de S3
+  s3.deleteObject(params, function (err, data) {
+    if (err) {
+      console.error("Error al eliminar el archivo desde S3: ", err);
+    } else {
+      console.log("Respuesta de eliminación de S3: ", data);
+      console.log("Archivo eliminado exitosamente desde S3: ", filename);
+      // Después de eliminarlo del bucket, también debes eliminarlo del historial
+      removeFileFromHistory(filename);
+    }
+  });
+}

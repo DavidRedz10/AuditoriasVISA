@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <title>Generador de Auditorias</title>
 
 </head>
+
 <body class="fondo">
   <!-- Sidebar -->
   <div class="sidebar">
@@ -18,7 +20,7 @@
     <a href="#" style="color: orange;">Plantilla Auditoria</a>
     <a href="ascii.html">Conversor EDCDIC</a>
     <a href="hexa.html">Conversor HEXA</a>
-    <h3 style="color: white" >Historial de descargas</h3>
+    <h3 style="color: white">Historial de descargas</h3>
     <div class="download-history-container"> <!-- Agregado el contenedor para el historial de descargas -->
       <!-- Historial de descargas se insertará aquí -->
     </div>
@@ -56,10 +58,31 @@
   <script src="https://unpkg.com/pizzip@3.1.4/dist/pizzip-utils.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aws-sdk/dist/aws-sdk.min.js"></script>
   <script src="script.js"></script>
+  <!-- Agrega esta función en tu script -->
+  <script>
+    function downloadFile(filename) {
+      var s3 = new AWS.S3();
+      var params = {
+        Bucket: 'auditflow',
+        Key: filename
+      };
+
+      s3.getObject(params, function (err, data) {
+        if (err) {
+          console.error("Error al descargar el archivo desde S3: ", err);
+        } else {
+          var blob = new Blob([data.Body], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" });
+          saveAs(blob, filename);
+        }
+      });
+    }
+  </script>
+
 </body>
 <footer>
   <div class="footer-copyright">
     &copy; Proyecto de prácticas David Rojas para la empresa REDEBAN S.A.
   </div>
 </footer>
+
 </html>
