@@ -1,3 +1,6 @@
+
+
+
 //Crear objeto para docxtemplater
 function createSectionObject(
   name,
@@ -175,8 +178,8 @@ window.generate = function generate() {
 
       // Configurar AWS SDK
       AWS.config.update({
-        accessKeyId: process.env.ACCESS_KEY,
-        secretAccessKey: process.env.PRIVATE_ACCESS_KEY,
+        accessKeyId: "AKIA4S4JXO76SPL4VHTS ",
+        secretAccessKey: "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",
         region: "us-east-1",
       });
 
@@ -287,8 +290,8 @@ function removeFileFromHistory(filename) {
 function deleteFile(filename) {
   // Configurar AWS SDK
   AWS.config.update({
-    accessKeyId: process.env.ACCESS_KEY,
-    secretAccessKey: process.env.PRIVATE_ACCESS_KEY,
+    accessKeyId: "AKIA4S4JXO76SPL4VHTS ",
+    secretAccessKey: "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",
     region: "us-east-1",
   });
 
