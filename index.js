@@ -22,12 +22,12 @@ function register() {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert("Email or Password is Outta Line!!");
+    alert("El correo o contraseña no son validas");
     return;
     // Don't continue running the code
   }
   if (validate_field(full_name) == false) {
-    alert("One or More Extra Fields is Outta Line!!");
+    alert("Uno de los campos hace falta");
     return;
   }
 
@@ -52,7 +52,7 @@ function register() {
       database_ref.child("users/" + user.uid).set(user_data);
 
       // DOne
-      alert("User Created!!");
+      alert("Usuario creado");
     })
     .catch(function (error) {
       // Firebase will use this to alert of its errors
@@ -71,7 +71,7 @@ function login() {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert("Email or Password is Outta Line!!");
+    alert("Valida que todos los campos sean validos");
     return;
     // Don't continue running the code
   }
@@ -94,7 +94,7 @@ function login() {
       database_ref.child("users/" + user.uid).update(user_data);
 
       // DOne
-      alert("User Logged In!!");
+      alert("Has ingresado correctamente");
       window.location.href = "index.html";
     })
     .catch(function (error) {
