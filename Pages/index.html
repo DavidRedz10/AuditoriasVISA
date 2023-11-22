@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="icon" type="image/vnd.icon" href="/favicon.ico">
   <title>Generador de Auditorias</title>
@@ -20,18 +20,27 @@
     <a href="#" style="color: orange;">Plantilla Auditoria</a>
     <a href="ascii.html">Conversor EDCDIC</a>
     <a href="hexa.html">Conversor HEXA</a>
+    
     <h3 style="color: white">Historial de descargas</h3>
     <div class="download-history-container"> <!-- Agregado el contenedor para el historial de descargas -->
       <!-- Historial de descargas se insertará aquí -->
     </div>
+
+    <div style="position: absolute; bottom: 120px; left: 20px; margin: 10px;">
+      <button id="convertButton">Cerrar sesión</button>
   </div>
+
+  </div>
+ 
 
   <!-- Contenido principal -->
   <div class="content">
     <h1>Plantilla Auditoria</h1>
+    
     <div id="sectionsContainer">
       <!-- Aquí se agregarán las secciones dinámicamente -->
     </div>
+    
 
     <!-- Botones Flotantes -->
     <button onclick="generate()" class="floating-button1">
@@ -45,6 +54,8 @@
     </button>
   </div>
 
+  
+
   <!-- Script Javascript -->
   <script>
     function autoResize(textarea) {
@@ -57,7 +68,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
   <script src="https://unpkg.com/pizzip@3.1.4/dist/pizzip-utils.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aws-sdk/dist/aws-sdk.min.js"></script>
-  <script src="script.js"></script>
+  <script src="/script.js"></script>
   <!-- Agrega esta función en tu script -->
   <script>
     function downloadFile(filename) {

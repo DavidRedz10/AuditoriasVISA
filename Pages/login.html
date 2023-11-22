@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <!-- Cool Google Fonts -->
+    <!-- Our stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/style.css ">
+</head>
+<style>
+    #convertButton {
+        background-color: orange;
+        /* Color de fondo */
+        border: 1px solid #ffffff08;
+        /* Borde */
+        padding: 10px 20px;
+        /* Espaciado interno */
+        border-radius: 10px;
+        /* Borde redondeado */
+        box-shadow: 5px 5px 15px #b0b0b0, -5px -5px 15px #ffffff;
+        /* Sombra para crear relieve */
+        font-size: 16px;
+        /* Tamaño de fuente */
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #convertButton:hover {
+        box-shadow: 3px 3px 10px #b0b0b0, -3px -3px 10px #ffffff;
+        /* Efecto de sombra al pasar el ratón */
+    }
+</style>
+
+<body class="fondo">
+    
+    <div style="margin: 70px;"></div>
+    
+    <div class="card" id="form_header_container">
+        <div class="auditflow">
+            <span >Audit</span><span class="flow">Flow</span>
+          </div>
+
+
+        <div id="form_content_container">
+            <div id="form_content_inner_container">
+                <input class="titulo" type="text" id="full_name" placeholder="Nombre">
+                <input class="titulo" type="email" id="email" placeholder="Correo electronico">
+                <input class="titulo" type="password" id="password" placeholder="Contraseña">
+
+                <div style="margin: 20px;"></div>
+
+                <div id="button_container" style="text-align    : center;">
+                    <button id="convertButton" onclick="login()">Ingresar</button>
+                    <button id="convertButton" onclick="register()">Registrarse</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+<!-- Our script must be loaded after firebase references -->
+<script src="/index.js"></script>
+
+</html>

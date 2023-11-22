@@ -13,7 +13,7 @@
   }
 
   .download-history-container {
-    max-height: 500px; /* Altura máxima antes de habilitar el desplazamiento vertical */
+    max-height: 400px; /* Altura máxima antes de habilitar el desplazamiento vertical */
     overflow-y: auto; /* Habilita el desplazamiento vertical si se desborda la altura máxima */
   }
   
@@ -269,6 +269,33 @@
       }
 
 
+
+
+
+
+      
+      #convertButton {
+        background-color: #f0f0f0;
+        /* Color de fondo */
+        border: 1px solid #ffffff08;
+        /* Borde */
+        padding: 10px 20px;
+        /* Espaciado interno */
+        border-radius: 10px;
+        /* Borde redondeado */
+        box-shadow: 5px 5px 15px #b0b0b0, -5px -5px 15px #ffffff;
+        /* Sombra para crear relieve */
+        font-size: 16px;
+        /* Tamaño de fuente */
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    
+      #convertButton:hover {
+        box-shadow: 3px 3px 10px #b0b0b0, -3px -3px 10px #ffffff;
+        /* Efecto de sombra al pasar el ratón */
+      }
 
 
       

@@ -1,6 +1,3 @@
-
-
-
 //Crear objeto para docxtemplater
 function createSectionObject(
   name,
@@ -290,7 +287,7 @@ function removeFileFromHistory(filename) {
 function deleteFile(filename) {
   // Configurar AWS SDK
   AWS.config.update({
-    accessKeyId: "AKIA4S4JXO76SPL4VHTS ",
+    accessKeyId: "AKIA4S4JXO76SPL4VHTS",
     secretAccessKey: "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",
     region: "us-east-1",
   });
